@@ -205,7 +205,7 @@ body {
 }
 #topA5 {
 	border-radius: 0; filter: saturate(1);
-	background-image: url('assets/pic0.jpg');
+	background-image: url('assets/pic0.JPG');
 	clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
 	transition: 1s ease-out
 }
