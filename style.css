@@ -1,5 +1,5 @@
 /* Global embedded entities */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,500;0,700;1,300&display=swap');
 
 /* Global meta-entities */
 :root {
@@ -67,7 +67,7 @@ body {
 .block { width: 100vw; z-index: -2; margin: 0 0 10vmin 0 }
 .tile {
 	position: relative;
-	height: 100vh; width: var(--tileW);
+	width: var(--tileW); min-height: var(--tileH);
 	margin: 0; color: var(--accentFont);
 	background: linear-gradient(170deg,
 		var(--accentBg) 85%, var(--accent2) 85.2%,
@@ -78,7 +78,7 @@ body {
 }
 .tile2 {
 	position: relative;
-	height: 100vh; width: var(--tileW);
+	width: var(--tileW); min-height: 100vh;
 	margin: 0; color: var(--accentFont2);
 }
 .frame {
@@ -87,72 +87,47 @@ body {
 	float: right; margin: 10% 0 0 0;
 }
 .frame2 {
-	position: relative; margin: auto;
-	max-width: 90%;
+	margin: auto; max-width: 80%;
 	background: linear-gradient(90deg,
 		var(--accentBg) 50%, var(--accent) 50%);
-	border-radius: 5vmin 0 5vmin 0
-}
-
-.cellA1 {
-	position: relative;
-	font: var(--fontCap); font-size: 8vmin;
-	margin: 0; text-align: center;
-	width: 10%; height: 10%;
-}
-.cellA2 {
-	position: relative; margin: 0 0 5% 0;
-	font: var(--fontTitle);
-	width: 90%; height: 10%;
-	background: var(--accent);
-}
-.cellA3 { position: relative; width: 100%; height: 85% }
-.cellA4 {
-	position: absolute;
-	width: 1.5vmin; height: 100%;
-	background: var(--accent2);
-}
-.cellA5 {
-	overflow-y: scroll; width: 80%;
-	max-height: var(--cellH);
-	margin: 1vmin 0 0 10%;
-	display: inline-block
+	border-radius: 5vmin 0 5vmin 0;
 }
 
 .photo {
 	margin: auto; padding: 3vmin;
-	max-width: 90%;
-	max-height: 80vmin;
+	max-width: 90%; max-height: 90%;
 	background-color: none;
 	border-radius: 7vmin 0 7vmin 0
 }
 
+.cellA1 {
+	position: relative; width: 10%;
+	font: var(--fontCap); font-size: 8vmin;
+	margin: 0; text-align: center;
+	display: flex; flex-wrap: wrap;
+}
+.cellA2 {
+	position: relative; width: 90%;
+	font: var(--fontTitle); margin: 0 0 5% 0;
+	background: var(--accent);
+	display: flex; flex-wrap: wrap;
+}
+.cellA3 { position: relative; width: 100% }
+.cellA4 {
+	position: absolute; width: 1.5vmin;
+	height: calc(100% - 25vh);
+	background: var(--accent2);
+}
+.cellA5 {
+	overflow-y: scroll; width: 80%;
+	margin: 1vmin 0 25vh 10%;
+	display: inline-block
+}
+
 ._a { order: var(--orderA); border-radius: 0 7vmin 0 0 }
 ._b { order: var(--orderB); border-radius: 7vmin 0 0 0 }
-
-#contacts {
-	font: 500 3vmin 'Montserrat';
-	position: fixed; color: #fff;
-	bottom: 5vmin; right: 0;
-	width: 30vmin; height: 13vmin;
-	background: #333; text-align: center;
-	border-radius: 3vmin 0 0 3vmin;
-	text-shadow: 0.35vmin 0.25vmin 0 #f07,
-		-0.2vmin -0.15vmin 0 #0ff;
-	box-shadow: 2vmin 1.5vmin 0 #000;
-	z-index: 2
-}
-.social {
-	width: 5vmin; height: 5vmin;
-	border-radius: 50%; margin: 0.5vmin;
-	background-color: #444;
-	box-shadow: 0 0 0 #0000;
-	transition: 0.3s, box-shadow 0.6s ease-out
-}
-.social:hover {
-	box-shadow: 0.25vmin -0.5vmin 0 #0ff, -0.25vmin 0.5vmin 0 #f07;
-	transform: scale(1.2); margin: 0.5vmin 1vmin
-}
+._aX { order: var(--orderAx); border-radius: 0 7vmin 0 0 }
+._bX { order: var(--orderBx); border-radius: 7vmin 0 0 0 }
 
 #partners {
 	margin: 0 0 20vmin 0; width: 90vw;
@@ -163,9 +138,10 @@ body {
 	background-color: var(--accentBg);
 	width: 30vmin; height: 10vmin;
 	display: inline-block;
-	margin: 1vmin 0 1vmin 4vmin;
+	margin: 1vmin 5vmin 1vmin 9vmin;
 	box-shadow: 0 0 0 #0000;
 	transform: translateX(-5vmin);
+	border-radius: 3vmin;
 	transition: 0.3s, box-shadow 0.6s ease-out
 }
 .ptnr:hover {
@@ -173,7 +149,55 @@ body {
 	transform: translateX(-5vmin) scale(1.2);
 }
 
-#footer { position: relative; width: 100vw; background: #222; box-shadow: 0 -3vmin 15vmin #000 }
+#topA1 {
+	box-shadow: 0 3vmin 15vmin #000;
+	margin: 0 0 20vmin 0;
+	background: var(--accent2);
+}
+#topA2 {
+	border-radius: 0;
+	background-image: url('assets/pattern2.svg');
+	background-color: var(--accentBg);
+	clip-path: polygon(0 0, 100% 0%, 100% 100%, 10% 100%);
+}
+#topA3 {
+	width: 86%; height: 70%;
+	margin: auto 0 auto auto;
+	background: #325; font: var(--fontTitle);
+	font-size: 5vmin; font-style: italic;
+	clip-path: polygon(17% 18%, 76% 0, 100% 19%, 100% 54%, 42% 100%, 0 70%);
+}
+#post1 {
+	float: left; margin: auto;
+	padding-top: 7vh; color: #fff;
+	width: 50vmin; height: 40vmin;
+}
+#topA5 {
+	border-radius: 0; filter: saturate(1);
+	background-image: url('assets/pic0.jpg');
+	clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+	transition: 1s ease-out
+}
+#topA6 { transition: 0.7s; position: absolute; backdrop-filter: brightness(0.5) contrast(0.85) }
+#topic1 {
+	max-height: 30%; width: 80%;
+	font: var(--fontSub); margin: auto;
+	z-index: 1
+}
+
+#topA2:hover #topA3 { animation: topA3 ease-out 0.7s forwards }
+#topA5:hover { filter: saturate(0) }
+#topA5:hover #topA6 { backdrop-filter: brightness(0.5) contrast(0.85) blur(0.2vmin) }
+#topA5:hover #topic1 { animation: popL ease-out 0.7s forwards }
+
+.tile:hover .cellA2 { animation: slideR ease-out 0.5s forwards }
+.tile:hover .cellA3 { animation: slideU ease-out 0.5s forwards }
+.tile2:hover .frame2 { animation: photo ease-out 0.5s forwards }
+
+#footer {
+	position: relative; width: 100vw;
+	background: #222; z-index: 6;
+	box-shadow: 0 -3vmin 15vmin #000 }
 .footer_item {
 	font: var(--fontMain); color: #fff;
 	font-size: 2.4vmin; display: inline-block;
@@ -183,55 +207,38 @@ body {
 .footerFX { transition: 0.3s }
 .footerFX:hover { transform: scale(1.2) }
 
-#topA1 {
-	box-shadow: 0 3vmin 15vmin #000;
-	margin: 0 0 20vmin 0;
-	background: var(--accent2);
-}
-#topA2 {
-	border-radius: 0; background: var(--accentBg);
-	clip-path: polygon(0 0, 100% 0%, 100% 100%, 10% 100%);
-}
-#topA3 {
-	width: 86%; height: 70%;
-	margin-top: 15vmin; float: right;
-	background: var(--accent);
-	font: var(--fontTitle); font-size: 5vmin;
-	clip-path: polygon(17% 18%, 76% 0, 100% 19%, 100% 54%, 42% 100%, 0 70%);
-}
-#topA4 {
-	float: left; margin: var(--introM);
-	width: 50vmin; height: 40vmin;
-}
-#topA5 {
-	border-radius: 0; filter: saturate(1);
-	background-image: url('assets/pic0.JPG');
-	clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
-	transition: 1s ease-out
-}
-#topA6 { transition: 0.7s; position: absolute; backdrop-filter: brightness(0.5) contrast(0.85) }
-#topA7 {
-	max-height: 30%; width: 80%;
-	font: var(--fontSub); margin: auto;
-	z-index: 1
-}
-
-#topA2:hover #topA3 { animation: topA3 ease-out 0.7s forwards }
-#topA5:hover { filter: saturate(0) }
-#topA5:hover #topA6 { backdrop-filter: brightness(0.5) contrast(0.85) blur(0.2vmin) }
-#topA5:hover #topA7 { animation: popL ease-out 0.7s forwards }
-
-.tile:hover .cellA2 { animation: slideR ease-out 0.5s forwards }
-.tile:hover .cellA3 { animation: slideU ease-out 0.5s forwards }
-.tile2:hover .frame2 { animation: photo ease-out 0.5s forwards }
-
-#lang {
-	width: 10vmin; height: 10vmin;
-	background: #0009;
-	border-radius: 2vmin;
+#float {
 	position: fixed; z-index: 5;
-	top: 3vmin; right: 3vmin;
+	bottom: 3vmin; right: 0;
+	flex-direction: column;
 }
+#contacts {
+	font: 500 var(--socialF) 'Montserrat'; color: #fff;
+	width: var(--socialW); height: var(--socialH);
+	background: #333; text-align: center;
+	border-radius: 3vmin 0 0 3vmin;
+	text-shadow: 0.35vmin 0.25vmin 0 #f075,
+		-0.2vmin -0.15vmin 0 #0ff7;
+	box-shadow: 2vmin 1.5vmin 0 #000;
+}
+.social {
+	width: var(--socialXR); height: var(--socialXR);
+	border-radius: 50%; margin: 0.5vmin;
+	background-color: #444;
+	box-shadow: 0 0 0 #0000;
+	transition: 0.3s, box-shadow 0.6s ease-out
+}
+.social:hover {
+	box-shadow: 0.25vmin -0.5vmin 0 #0ff, -0.25vmin 0.5vmin 0 #f07;
+	transform: scale(1.2); margin: 0.5vmin 1vmin
+}
+#lang_frame {
+	font: 500 var(--langF) 'Montserrat';
+	padding: var(--langP); border-radius: 2vmin;
+	background: #000; color: var(--accent);
+	margin: auto 1vmin 1vmin auto
+}
+#lang_frame:hover { background: #222; color: var(--accent2); animation: wobble linear 0.5s forwards }
 #bg {
 	width: 100%; height: 100%;
 	position: fixed; z-index: -11;
@@ -241,7 +248,6 @@ body {
 }
 
 /* Animations */
-@keyframes expandY { 0%{ transform: scaleY(0) } 100%{ transform: scaleY(1) } }
 @keyframes topA3 {
 	0%{ letter-spacing: 50vmin; font-size: 20vmin; color: #0000 }
 	35% { transform: rotate(-5deg) scale(0.9); color: #0002 }
@@ -258,4 +264,8 @@ body {
 		transform: rotate(3deg);
 		box-shadow: -2vmin 5vmin 0 #0ffa, 2vmin -5vmin 0 #f07a;
 	}
+}
+@keyframes wobble {
+	35% { transform: rotate(-10deg) scale(0.9) }
+	75% { transform: rotate(10deg) scale(1.1) }
 }
